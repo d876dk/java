@@ -1,0 +1,73 @@
+//main
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        Linear l = new Linear(a,b);
+        Square s = new Square(a,b,c);
+        l.print();
+        l.result();
+        s.result();
+        s.print();
+    }
+}
+//root
+public interface Root {
+    void result();
+    void print();
+}
+//linear
+public class Linear implements Root{
+    float a,b;
+    Linear(float a,float b){
+        this.a = a;
+        this.b = b;
+    }
+    public void result(){
+        System.out.println(-b/a);
+    }
+    public void print(){
+        if(b>0)
+            System.out.println(a+"x"+"+"+b);
+        else
+            System.out.println(a+"x"+b);
+
+    }
+
+}
+//square
+public class Square {
+    float a,b,c;
+    Square(float a,float b,float c){
+        this.a = a;
+        this.b = b;
+        this.c = c;
+
+    }
+    public void result(){
+        float x1,x2;
+        float D = b*b - 4*a*c;
+        if(D> 0){
+           x1 = (float) (-b + Math.sqrt(D))/(2*a);
+           x2 = (float) (-b - Math.sqrt(D))/(2*a);
+           System.out.println("x1 = "+ x1 + "\n" + "x2 = "+ x2);
+        }
+        else if(D == 0){
+            x1 = (float) (-b + Math.sqrt(D))/(2*a);
+            System.out.println("x1 = "+ x1);
+        }
+        else{
+            System.out.println("Roots are complex");
+        }
+    }
+    public void print(){
+            System.out.println(a+"x^2"+"+"+b+"x"+"+"+c);
+
+    }
+}
