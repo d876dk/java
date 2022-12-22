@@ -1,3 +1,4 @@
+////////////////////1
 //main
 import java.util.Scanner;
 
@@ -69,5 +70,101 @@ public class Square {
     public void print(){
             System.out.println(a+"x^2"+"+"+b+"x"+"+"+c);
 
+    }
+}
+////////////////////////////////2
+//ship
+public class Ship {
+    String name;
+    int vodo;
+    int length;
+    int x;
+    int y;
+    int speed;
+    Ship(String name,int length, int x, int y, int speed){
+        this.name = name;
+        this.vodo = vodo;
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.length = length;
+    }
+    Ship(){
+        this.name = "ship";
+        this.vodo = 100;
+        this.x = 0;
+        this.y = 0;
+        this.speed = 10;
+        this.length = 100;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public void setVodo(int vodo) {
+        this.vodo = vodo;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+    void print() {
+        System.out.println("Name:"+name+"Length:"+length+"Speed:"+speed+"Vodo:"+vodo+"X:"+x+"Y"+y);
+    }
+    void movePosition(int x,int y){
+        this.x += x;
+        this.y +=y;
+    }
+
+}
+//BattleShip
+public class BattleShip extends Ship{
+    int guns;
+    double range;
+    BattleShip(int guns,double range,String name,int vodo,int length,int x, int y,int speed){
+        super(name,length,x,y,speed);
+        this.guns = guns;
+        this.range = range;
+    }
+
+    int Strike(int x1,int y1){
+        double d = Math.sqrt(((x1-this.x)*(x1-this.x))+((y1-this.y)*(y1-this.y)));
+        if(d<range){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
+}
+//PassShip
+public class PassShip extends Ship{
+    int mest;
+    int shlupki;
+    PassShip(int mest,int shlupki,String name,int length,int x,int y,int speed){
+        super(name,length,x,y,speed);
+        this.mest = mest;
+        this.shlupki = shlupki;
+    }
+    void numberOfSaved(){
+        System.out.println("Saved people:"+shlupki*45);
+    }
+//main
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
     }
 }
